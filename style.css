@@ -691,3 +691,50 @@ section{
 nav a.active{
     color: var(--gold);
 }
+/* HERO BUTTON ALIGNMENT */
+
+.hero .btn{
+    margin-top:35px;
+}
+
+
+/* SECTION TEXT WIDTH */
+
+section > p{
+    max-width:900px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+
+/* LOGO IMAGE SUPPORT (Future Use) */
+
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+
+/* PROFILE IMAGE POLISH */
+
+.image-frame img{
+    filter:saturate(1.05);
+}
+
+
+/* CONTACT PROFILE */
+
+.contact-box img{
+    object-fit:cover;
+}
+
+
+/* SMOOTH CARD TRANSITION */
+
+.card,
+.timeline-box,
+.contact-details div{
+    will-change:transform;
+}
