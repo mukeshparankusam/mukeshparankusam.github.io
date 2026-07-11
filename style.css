@@ -688,3 +688,6 @@ section{
 }
 
 }
+nav a.active{
+    color: var(--gold);
+}
