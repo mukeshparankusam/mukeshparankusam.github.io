@@ -2,9 +2,11 @@
     --black: #050505;
     --black-soft: #0b0b0b;
     --black-light: #111111;
+
     --white: #f5f3ef;
     --silver: #b8b8b8;
     --gold: #c9a96e;
+
     --border: rgba(255, 255, 255, 0.12);
     --border-gold: rgba(201, 169, 110, 0.35);
 
@@ -45,6 +47,76 @@ button {
 
 
 /* =========================
+   PRELOADER
+========================= */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--black);
+
+    animation: preloaderExit 1.2s ease 1.6s forwards;
+}
+
+.preloader-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--white);
+
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.45em;
+
+    animation: nameReveal 1.2s ease forwards;
+}
+
+.preloader-name span {
+    display: block;
+}
+
+@keyframes nameReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        letter-spacing: 0.7em;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.45em;
+    }
+
+}
+
+@keyframes preloaderExit {
+
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+}
+
+
+/* =========================
    HEADER
 ========================= */
 
@@ -54,7 +126,9 @@ button {
     left: 0;
     width: 100%;
     height: 100px;
+
     padding: 0 6vw;
+
     z-index: 1000;
 
     display: flex;
@@ -83,6 +157,7 @@ button {
 
 .brand-name {
     color: var(--white);
+
     font-size: 10px;
     line-height: 1.5;
     letter-spacing: 0.25em;
@@ -96,10 +171,13 @@ button {
 
 .main-nav a {
     position: relative;
+
     color: var(--silver);
+
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+
     transition: 0.3s ease;
 }
 
@@ -109,12 +187,16 @@ button {
 
 .main-nav a::after {
     content: "";
+
     position: absolute;
     left: 0;
     bottom: -8px;
+
     width: 0;
     height: 1px;
+
     background: var(--gold);
+
     transition: 0.3s ease;
 }
 
@@ -124,16 +206,21 @@ button {
 
 .menu-button {
     display: none;
+
     border: none;
     background: transparent;
+
     cursor: pointer;
 }
 
 .menu-button span {
     display: block;
+
     width: 25px;
     height: 1px;
+
     margin: 6px 0;
+
     background: var(--white);
 }
 
@@ -144,6 +231,7 @@ button {
 
 .hero {
     min-height: 100vh;
+
     padding: 160px 8vw 80px;
 
     position: relative;
@@ -172,6 +260,7 @@ button {
 .hero-content {
     position: relative;
     z-index: 2;
+
     max-width: 720px;
 }
 
@@ -179,12 +268,14 @@ button {
     margin-bottom: 30px;
 
     color: var(--gold);
+
     font-size: 10px;
     letter-spacing: 0.3em;
 }
 
 .hero h1 {
     font-family: var(--serif);
+
     font-size: clamp(4rem, 7vw, 8rem);
     font-weight: 400;
     line-height: 0.98;
@@ -193,15 +284,17 @@ button {
 
 .hero h1 span {
     display: block;
+
     color: var(--silver);
-    font-style: italic;
 }
 
 .hero-description {
     max-width: 430px;
+
     margin-top: 40px;
 
     color: #999;
+
     font-size: 14px;
     line-height: 1.9;
 }
@@ -230,8 +323,10 @@ button {
 
 .button-arrow {
     font-family: Arial, sans-serif;
+
     font-size: 20px;
     line-height: 1;
+
     color: var(--gold);
 }
 
@@ -241,6 +336,7 @@ button {
 
 .hero-visual {
     position: relative;
+
     min-height: 600px;
 
     display: flex;
@@ -256,9 +352,8 @@ button {
     height: min(45vw, 600px);
 
     overflow: hidden;
-    background: var(--black-light);
 
-    transition: transform 0.5s ease;
+    background: var(--black-light);
 }
 
 .portrait-frame img {
@@ -286,13 +381,13 @@ button {
     border: 1px solid var(--gold);
 
     transform: translate(25px, 25px);
-    opacity: 0.6;
 
-    transition: transform 0.5s ease;
+    opacity: 0.6;
 }
 
 .scroll-indicator {
     position: absolute;
+
     bottom: 50px;
     left: 8vw;
 
@@ -301,6 +396,7 @@ button {
     gap: 18px;
 
     color: #666;
+
     font-size: 8px;
     letter-spacing: 0.25em;
 }
@@ -308,20 +404,18 @@ button {
 .scroll-line {
     width: 70px;
     height: 1px;
+
     background: var(--gold);
 }
 
 
 /* =========================
-   SECTION LABELS
+   SECTION LABEL
 ========================= */
 
 .section-label {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
     color: var(--gold);
+
     font-size: 9px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -334,6 +428,7 @@ button {
 
 .intro-section {
     padding: 180px 8vw;
+
     background: var(--black-soft);
 }
 
@@ -347,13 +442,14 @@ button {
 
 .intro-content h2 {
     font-family: var(--serif);
+
     font-size: clamp(3rem, 5vw, 6rem);
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.04em;
 }
 
-.intro-content h2 em {
+.intro-content h2 span {
     color: var(--gold);
 }
 
@@ -365,6 +461,7 @@ button {
     margin-bottom: 25px;
 
     color: #999;
+
     font-size: 15px;
     line-height: 1.9;
 }
@@ -379,6 +476,7 @@ button {
     border-bottom: 1px solid var(--border-gold);
 
     color: var(--gold);
+
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -404,6 +502,7 @@ button {
 
 .role-card {
     min-height: 370px;
+
     padding: 28px 22px;
 
     border-right: 1px solid var(--border);
@@ -423,6 +522,7 @@ button {
     margin-top: 110px;
 
     font-family: var(--serif);
+
     font-size: 27px;
     font-weight: 400;
     line-height: 1.15;
@@ -432,6 +532,7 @@ button {
     margin-top: 28px;
 
     color: #777;
+
     font-size: 12px;
     line-height: 1.7;
 }
@@ -443,6 +544,7 @@ button {
 
 .work-section {
     padding: 180px 8vw;
+
     background: var(--black-soft);
 }
 
@@ -456,12 +558,13 @@ button {
 
 .work-heading h2 {
     font-family: var(--serif);
+
     font-size: clamp(3rem, 5vw, 6rem);
     font-weight: 400;
     line-height: 1.05;
 }
 
-.work-heading h2 em {
+.work-heading h2 span {
     color: var(--gold);
 }
 
@@ -469,12 +572,14 @@ button {
     padding-top: 12px;
 
     color: #888;
+
     font-size: 14px;
     line-height: 1.9;
 }
 
 .experience-list {
     margin-top: 110px;
+
     border-top: 1px solid var(--border);
 }
 
@@ -493,11 +598,13 @@ button {
 .experience-item:hover {
     padding-right: 20px;
     padding-left: 20px;
+
     background: var(--black);
 }
 
 .experience-main h3 {
     font-family: var(--serif);
+
     font-size: 28px;
     font-weight: 400;
 }
@@ -506,11 +613,13 @@ button {
     margin-top: 10px;
 
     color: #777;
+
     font-size: 12px;
 }
 
 .experience-arrow {
     color: var(--gold);
+
     font-size: 22px;
 }
 
@@ -527,6 +636,7 @@ button {
     position: relative;
 
     min-height: 530px;
+
     margin-top: 70px;
     padding: 70px;
 
@@ -551,11 +661,13 @@ button {
 .venture-content {
     position: relative;
     z-index: 2;
+
     max-width: 600px;
 }
 
 .venture-category {
     color: var(--gold);
+
     font-size: 9px;
     letter-spacing: 0.25em;
 }
@@ -564,39 +676,32 @@ button {
     margin-top: 25px;
 
     font-family: var(--serif);
+
     font-size: clamp(3.5rem, 6vw, 7rem);
     font-weight: 400;
     line-height: 0.95;
 }
 
-.venture-card h2 em {
+.venture-card h2 span {
     display: block;
+
     color: var(--silver);
 }
 
 .venture-card p {
     max-width: 430px;
+
     margin-top: 30px;
 
     color: #888;
+
     font-size: 14px;
     line-height: 1.8;
 }
 
-.venture-link {
-    display: inline-flex;
-    gap: 18px;
-
-    margin-top: 35px;
-
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-}
-
 .venture-symbol {
     position: absolute;
+
     top: 50%;
     right: 8%;
 
@@ -614,7 +719,6 @@ button {
 
     font-family: var(--serif);
     font-size: 70px;
-    font-style: italic;
 
     transform: translateY(-50%);
 }
@@ -644,6 +748,7 @@ button {
 
 .books-section {
     padding: 180px 8vw;
+
     background: var(--black-soft);
 }
 
@@ -657,11 +762,12 @@ button {
 
 .books-header h2 {
     font-family: var(--serif);
+
     font-size: clamp(3rem, 5vw, 6rem);
     font-weight: 400;
 }
 
-.books-header h2 em {
+.books-header h2 span {
     color: var(--gold);
 }
 
@@ -669,6 +775,7 @@ button {
     padding-top: 15px;
 
     color: #888;
+
     line-height: 1.9;
 }
 
@@ -682,6 +789,7 @@ button {
 
 .book-card {
     min-height: 350px;
+
     padding: 28px;
 
     border: 1px solid var(--border);
@@ -691,6 +799,7 @@ button {
 
 .book-card:hover {
     border-color: var(--gold);
+
     transform: translateY(-8px);
 }
 
@@ -698,6 +807,7 @@ button {
     margin-top: 90px;
 
     font-family: var(--serif);
+
     font-size: 42px;
     font-weight: 400;
 }
@@ -706,6 +816,7 @@ button {
     margin-top: 30px;
 
     color: #777;
+
     font-size: 12px;
     line-height: 1.8;
 }
@@ -717,6 +828,7 @@ button {
 
 .vision-section {
     min-height: 80vh;
+
     padding: 150px 8vw;
 
     display: flex;
@@ -731,21 +843,24 @@ button {
     color: var(--gold);
 
     font-family: var(--serif);
+
     font-size: 120px;
     line-height: 0.5;
 }
 
 .vision-section h2 {
     max-width: 900px;
+
     margin-top: 50px;
 
     font-family: var(--serif);
+
     font-size: clamp(3rem, 5vw, 6rem);
     font-weight: 400;
     line-height: 1.05;
 }
 
-.vision-section h2 em {
+.vision-section h2 span {
     color: var(--gold);
 }
 
@@ -753,6 +868,7 @@ button {
     margin-top: 35px;
 
     color: #777;
+
     font-size: 14px;
 }
 
@@ -763,6 +879,7 @@ button {
 
 .contact-section {
     padding: 180px 8vw 100px;
+
     background: var(--black-soft);
 }
 
@@ -774,20 +891,23 @@ button {
     max-width: 800px;
 
     font-family: var(--serif);
+
     font-size: clamp(4rem, 7vw, 8rem);
     font-weight: 400;
     line-height: 0.95;
 }
 
-.contact-content h2 em {
+.contact-content h2 span {
     color: var(--gold);
 }
 
 .contact-content p {
     max-width: 430px;
+
     margin-top: 40px;
 
     color: #888;
+
     line-height: 1.8;
 }
 
@@ -820,6 +940,7 @@ button {
 
 .contact-details span {
     color: var(--gold);
+
     font-size: 9px;
     letter-spacing: 0.2em;
 }
@@ -828,6 +949,7 @@ button {
     margin-top: 12px;
 
     color: #aaa;
+
     font-size: 13px;
 }
 
@@ -854,12 +976,9 @@ button {
     gap: 20px;
 }
 
-.footer-brand .brand-name {
-    color: var(--white);
-}
-
 .footer-brand p {
     color: #666;
+
     font-size: 11px;
     line-height: 1.7;
 }
@@ -871,12 +990,12 @@ button {
 }
 
 .social-links a {
+    width: 38px;
+    height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 38px;
-    height: 38px;
 
     color: var(--silver);
 
@@ -885,16 +1004,17 @@ button {
 
 .social-links a:hover {
     color: var(--gold);
+
     transform: translateY(-3px);
 }
 
 .social-icon {
+    width: 22px;
+    height: 22px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 22px;
-    height: 22px;
 }
 
 .social-icon svg {
@@ -903,6 +1023,7 @@ button {
 
     fill: none;
     stroke: currentColor;
+
     stroke-width: 1.6;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -917,6 +1038,7 @@ button {
     border-top: 1px solid var(--border);
 
     color: #555;
+
     font-size: 10px;
 }
 
@@ -927,27 +1049,35 @@ button {
 
 @media (max-width: 768px) {
 
+
     .site-header {
         height: 76px;
+
         padding: 0 7vw;
     }
 
+
     .brand-name {
         font-size: 8px;
+
         letter-spacing: 0.2em;
     }
+
 
     .main-nav {
         display: none;
     }
 
+
     .menu-button {
         display: block;
+
         position: relative;
         z-index: 1001;
 
         padding: 10px 0 10px 10px;
     }
+
 
     .main-nav.mobile-open {
         position: fixed;
@@ -958,57 +1088,73 @@ button {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
         gap: 35px;
 
         background: var(--black);
     }
 
+
     .main-nav.mobile-open a {
         font-family: var(--serif);
+
         font-size: 30px;
         letter-spacing: 0;
         text-transform: none;
+
         color: var(--white);
     }
 
 
     /* HERO */
 
+
     .hero {
         min-height: auto;
+
         padding: 140px 7vw 100px;
 
         display: flex;
         flex-direction: column;
     }
 
+
     .eyebrow {
         font-size: 8px;
+
         letter-spacing: 0.2em;
     }
+
 
     .hero h1 {
         font-size: clamp(3.5rem, 15vw, 5.5rem);
     }
 
+
     .hero-description {
         margin-top: 30px;
+
         font-size: 13px;
     }
+
 
     .primary-button {
         margin-top: 35px;
     }
 
+
     .hero-visual {
         min-height: auto;
+
         margin-top: 80px;
     }
+
 
     .portrait-frame {
         width: 78vw;
         height: 105vw;
     }
+
 
     .portrait-outline {
         width: 78vw;
@@ -1017,10 +1163,13 @@ button {
         transform: translate(18px, 18px);
     }
 
+
     .hero-background-text {
         font-size: 25vw;
+
         bottom: 30px;
     }
+
 
     .scroll-indicator {
         display: none;
@@ -1029,14 +1178,17 @@ button {
 
     /* COMMON SECTIONS */
 
+
     .intro-section,
     .roles-section,
     .work-section,
     .ventures-section,
     .books-section,
     .contact-section {
+
         padding: 110px 7vw;
     }
+
 
     .section-label {
         font-size: 8px;
@@ -1045,51 +1197,66 @@ button {
 
     /* ABOUT */
 
+
     .intro-content,
     .work-heading,
     .books-header {
+
         display: block;
+
         margin-top: 60px;
     }
+
 
     .intro-content h2,
     .work-heading h2,
     .books-header h2 {
+
         font-size: clamp(3rem, 13vw, 5rem);
     }
+
 
     .intro-text,
     .work-heading p,
     .books-header p {
+
         margin-top: 40px;
     }
 
 
     /* ROLES */
 
+
     .roles-grid {
         grid-template-columns: 1fr;
+
         margin-top: 60px;
     }
 
+
     .role-card,
     .role-card:first-child {
+
         min-height: 270px;
+
+        padding: 25px;
 
         border: 1px solid var(--border);
         border-bottom: none;
-
-        padding: 25px;
     }
+
 
     .role-card:last-child {
         border-bottom: 1px solid var(--border);
     }
 
+
     .role-card h3 {
         margin-top: 65px;
+
         font-size: 27px;
     }
+
 
     .role-card p {
         margin-top: 25px;
@@ -1098,9 +1265,11 @@ button {
 
     /* WORK */
 
+
     .experience-list {
         margin-top: 60px;
     }
+
 
     .experience-item {
         grid-template-columns: 1fr 25px;
@@ -1109,10 +1278,12 @@ button {
         padding: 30px 0;
     }
 
+
     .experience-main h3 {
         font-size: 21px;
         line-height: 1.2;
     }
+
 
     .experience-main p {
         font-size: 12px;
@@ -1122,7 +1293,9 @@ button {
 
     /* VENTURES */
 
+
     .venture-card {
+
         min-height: 570px;
 
         margin-top: 55px;
@@ -1131,13 +1304,16 @@ button {
         display: block;
     }
 
+
     .venture-card + .venture-card {
         margin-top: 20px;
     }
 
+
     .venture-content {
         width: 100%;
     }
+
 
     .venture-category {
         display: block;
@@ -1146,11 +1322,31 @@ button {
         line-height: 1.6;
     }
 
+
     .venture-card h2 {
-        font-size: clamp(3rem, 13vw, 5rem);
+
+        max-width: 100%;
+
+        font-size: clamp(2.8rem, 12vw, 5rem);
+        line-height: 0.95;
+
+        overflow-wrap: break-word;
+        word-break: normal;
     }
 
+
+    .venture-card h2 span {
+
+        display: block;
+
+        max-width: 100%;
+
+        font-size: 0.82em;
+    }
+
+
     .venture-card p {
+
         max-width: 85%;
 
         margin-top: 30px;
@@ -1159,7 +1355,9 @@ button {
         line-height: 1.8;
     }
 
+
     .venture-symbol {
+
         width: 190px;
         height: 190px;
 
@@ -1172,9 +1370,11 @@ button {
         font-size: 42px;
     }
 
+
     .venture-symbol::before {
         inset: 18px;
     }
+
 
     .venture-symbol::after {
         inset: 42px;
@@ -1183,16 +1383,20 @@ button {
 
     /* BOOKS */
 
+
     .books-grid {
+
         grid-template-columns: 1fr;
         gap: 15px;
 
         margin-top: 60px;
     }
 
+
     .book-card {
         min-height: 270px;
     }
+
 
     .book-card h3 {
         margin-top: 70px;
@@ -1201,79 +1405,98 @@ button {
 
     /* VISION */
 
+
     .vision-section {
+
         min-height: 70vh;
+
         padding: 100px 7vw;
     }
+
 
     .vision-mark {
         font-size: 85px;
     }
 
+
     .vision-section h2 {
+
         margin-top: 35px;
+
         font-size: clamp(3rem, 13vw, 5rem);
     }
 
+
     .vision-section p {
+
         max-width: 300px;
+
         line-height: 1.7;
     }
 
 
     /* CONTACT */
 
+
     .contact-content {
         margin-top: 65px;
     }
 
+
     .contact-content h2 {
+
         font-size: clamp(3.5rem, 15vw, 6rem);
     }
 
+
     .email-link {
+
         max-width: 100%;
+
         font-size: 15px;
+
         word-break: break-word;
     }
 
+
     .contact-details {
+
         gap: 45px;
+
         margin-top: 80px;
     }
 
 
     /* FOOTER */
 
+
     .site-footer {
+
         padding: 65px 7vw 25px;
     }
 
+
     .footer-top {
+
         display: block;
     }
 
+
     .social-links {
+
         justify-content: flex-start;
         gap: 22px;
+
         margin-top: 40px;
     }
 
+
     .footer-bottom {
+
         flex-direction: column;
         gap: 15px;
 
         margin-top: 20px;
     }
 
-}
-.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
