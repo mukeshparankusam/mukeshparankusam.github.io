@@ -1117,3 +1117,53 @@ button {
     }
 
 }
+/* =========================
+   JAVASCRIPT ANIMATIONS
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.site-header.scrolled {
+    background: rgba(5, 5, 5, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.main-nav.mobile-open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: #050505;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    z-index: -1;
+}
+
+.main-nav.mobile-open a {
+    font-family: var(--serif);
+    font-size: 30px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--white);
+}
+
+.menu-button.active span:first-child {
+    transform: translateY(3px) rotate(45deg);
+}
+
+.menu-button.active span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
