@@ -1,218 +1,130 @@
-// ===============================
-// Smooth Scroll
-// ===============================
+document.addEventListener("DOMContentLoaded", () => {
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-    link.addEventListener("click", function (e) {
+    /* =========================
+       HEADER SCROLL EFFECT
+    ========================= */
 
-        e.preventDefault();
+    const header = document.querySelector(".site-header");
 
-        const target = document.querySelector(this.getAttribute("href"));
+    window.addEventListener("scroll", () => {
 
-        if (target) {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
 
-            target.scrollIntoView({
+    });
 
-                behavior: "smooth"
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuButton = document.querySelector(".menu-button");
+    const nav = document.querySelector(".main-nav");
+    const navLinks = document.querySelectorAll(".main-nav a");
+
+
+    if (menuButton && nav) {
+
+        menuButton.addEventListener("click", () => {
+
+            nav.classList.toggle("mobile-open");
+
+            document.body.style.overflow =
+                nav.classList.contains("mobile-open")
+                    ? "hidden"
+                    : "";
+
+        });
+
+
+        navLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                nav.classList.remove("mobile-open");
+
+                document.body.style.overflow = "";
 
             });
 
-        }
-
-    });
-
-});
-
-
-// ===============================
-// Header Background on Scroll
-// ===============================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 60) {
-
-        header.style.background = "rgba(10,10,10,.95)";
-        header.style.boxShadow = "0 10px 40px rgba(0,0,0,.4)";
+        });
 
     }
 
-    else {
 
-        header.style.background = "rgba(8,8,8,.82)";
-        header.style.boxShadow = "none";
+    /* =========================
+       SMOOTH SCROLL
+    ========================= */
 
-    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-});
+        anchor.addEventListener("click", function (event) {
+
+            const target = document.querySelector(
+                this.getAttribute("href")
+            );
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
 
 
-// ===============================
-// Fade Animation
-// ===============================
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
 
-const observer = new IntersectionObserver((entries) => {
+    const revealElements = document.querySelectorAll(
+        ".role-card, .experience-item, .venture-card, .book-card"
+    );
 
-    entries.forEach(entry => {
 
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver(
 
-            entry.target.classList.add("show");
+        (entries) => {
 
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
         }
 
+    );
+
+
+    revealElements.forEach(element => {
+
+        element.classList.add("reveal");
+
+        observer.observe(element);
+
     });
 
-}, {
-
-    threshold: 0.15
 
 });
-
-document.querySelectorAll("section,.card,.venture,.book-card").forEach(el => {
-
-    el.classList.add("hidden");
-
-    observer.observe(el);
-
-});
-
-
-// ===============================
-// Active Navigation
-// ===============================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const top = section.offsetTop - 120;
-
-        if (pageYOffset >= top) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-// ===============================
-// Image Hover Animation
-// ===============================
-
-document.querySelectorAll(".venture img,.book-card img").forEach(img => {
-
-    img.addEventListener("mouseenter", () => {
-
-        img.style.transform = "scale(1.04)";
-
-    });
-
-    img.addEventListener("mouseleave", () => {
-
-        img.style.transform = "scale(1)";
-
-    });
-
-});
-
-
-// ===============================
-// Typing Effect
-// ===============================
-
-const text = "Educator • Builder • Author";
-
-const title = document.querySelector(".small-title");
-
-if (title) {
-
-    let i = 0;
-
-    title.textContent = "";
-
-    function type() {
-
-        if (i < text.length) {
-
-            title.textContent += text.charAt(i);
-
-            i++;
-
-            setTimeout(type, 70);
-
-        }
-
-    }
-
-    type();
-
-}
-
-
-// ===============================
-// Scroll Reveal CSS Classes
-// ===============================
-
-const style = document.createElement("style");
-
-style.innerHTML = `
-
-.hidden{
-
-opacity:0;
-
-transform:translateY(60px);
-
-transition:all .8s ease;
-
-}
-
-.show{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-nav a.active{
-
-color:#d4a373;
-
-}
-
-`;
-
-document.head.appendChild(style);
-
-
-// ===============================
-// Console Signature
-// ===============================
-
-console.log("%cMukesh Parankusam Portfolio",
-"color:#d4a373;font-size:18px;font-weight:bold;");
