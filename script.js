@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const header = document.querySelector(".site-header");
-    const menuButton = document.querySelector(".menu-button");
-    const nav = document.querySelector(".main-nav");
-    const navLinks = document.querySelectorAll(".main-nav a");
-
 
     /* =========================
        HEADER SCROLL EFFECT
     ========================= */
+
+    const header = document.querySelector(".site-header");
 
     window.addEventListener("scroll", () => {
 
@@ -24,6 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        MOBILE MENU
     ========================= */
+
+    const menuButton = document.querySelector(".menu-button");
+    const nav = document.querySelector(".main-nav");
+    const navLinks = document.querySelectorAll(".main-nav a");
+
 
     if (menuButton && nav) {
 
@@ -52,6 +54,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
+
+    /* =========================
+       SMOOTH SCROLL
+    ========================= */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        anchor.addEventListener("click", function (event) {
+
+            const target = document.querySelector(
+                this.getAttribute("href")
+            );
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
 
 
     /* =========================
@@ -96,31 +126,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    /* =========================
-       SMOOTH ANCHOR NAVIGATION
-    ========================= */
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-        anchor.addEventListener("click", function (event) {
-
-            const target = document.querySelector(
-                this.getAttribute("href")
-            );
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
-
-        });
-
-    });
 
 });
