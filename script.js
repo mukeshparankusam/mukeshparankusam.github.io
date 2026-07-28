@@ -1,26 +1,106 @@
 /*=====================================================
-  MUKESH PARANKUSAM
-  Premium Portfolio
-  script.js
+            MUKESH PARANKUSAM PORTFOLIO
+                    script.js
 =====================================================*/
 
-/* ===========================
-SMOOTH SCROLL
-=========================== */
+/*================ PRELOADER =================*/
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+window.addEventListener("load", () => {
 
-    anchor.addEventListener("click",function(e){
+    const preloader = document.getElementById("preloader");
+
+    setTimeout(() => {
+
+        preloader.style.opacity = "0";
+        preloader.style.visibility = "hidden";
+
+    }, 1200);
+
+});
+
+/*================ CUSTOM CURSOR =================*/
+
+const cursor = document.querySelector(".cursor");
+const cursor2 = document.querySelector(".cursor2");
+
+document.addEventListener("mousemove", (e) => {
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+    cursor2.style.left = e.clientX + "px";
+    cursor2.style.top = e.clientY + "px";
+
+});
+
+document.querySelectorAll("a, button, .btn, .project-card, .organization-card, .book-card").forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+
+        cursor2.style.transform = "scale(1.8)";
+        cursor2.style.borderColor = "#d4af37";
+
+    });
+
+    item.addEventListener("mouseleave", () => {
+
+        cursor2.style.transform = "scale(1)";
+        cursor2.style.borderColor = "#d4af37";
+
+    });
+
+});
+
+/*================ STICKY HEADER =================*/
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 80) {
+
+        header.classList.add("active");
+
+    } else {
+
+        header.classList.remove("active");
+
+    }
+
+});
+
+/*================ MOBILE MENU =================*/
+
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
+
+if (menuBtn) {
+
+    menuBtn.addEventListener("click", () => {
+
+        nav.classList.toggle("show");
+
+        menuBtn.classList.toggle("fa-xmark");
+
+    });
+
+}
+
+/*================ SMOOTH SCROLL =================*/
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener("click", function (e) {
 
         e.preventDefault();
 
-        const target=document.querySelector(this.getAttribute("href"));
+        const target = document.querySelector(this.getAttribute("href"));
 
-        if(target){
+        if (target) {
 
             target.scrollIntoView({
 
-                behavior:"smooth"
+                behavior: "smooth"
 
             });
 
@@ -30,95 +110,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
 });
 
+/*================ ACTIVE MENU =================*/
 
-/* ===========================
-REVEAL ANIMATION
-=========================== */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav ul li a");
 
-const reveals=document.querySelectorAll(
+window.addEventListener("scroll", () => {
 
-".hero,.about,.journey,.expertise,.ventures,.books,.quote,.contact"
+    let current = "";
 
-);
+    sections.forEach(section => {
 
-const observer=new IntersectionObserver((entries)=>{
+        const sectionTop = section.offsetTop - 140;
 
-    entries.forEach(entry=>{
+        if (scrollY >= sectionTop) {
 
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("active");
+            current = section.getAttribute("id");
 
         }
 
     });
 
-},{
-
-    threshold:0.15
-
-});
-
-reveals.forEach(section=>{
-
-    section.classList.add("reveal");
-
-    observer.observe(section);
-
-});
-
-
-/* ===========================
-NAVBAR SCROLL EFFECT
-=========================== */
-
-const header=document.querySelector("header");
-
-window.addEventListener("scroll",()=>{
-
-    if(window.scrollY>80){
-
-        header.style.background="rgba(7,7,7,.92)";
-        header.style.boxShadow="0 15px 40px rgba(0,0,0,.35)";
-
-    }else{
-
-        header.style.background="rgba(7,7,7,.72)";
-        header.style.boxShadow="none";
-
-    }
-
-});
-
-
-/* ===========================
-ACTIVE NAVIGATION
-=========================== */
-
-const sections=document.querySelectorAll("section");
-const navLinks=document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll",()=>{
-
-    let current="";
-
-    sections.forEach(section=>{
-
-        const sectionTop=section.offsetTop-180;
-
-        if(pageYOffset>=sectionTop){
-
-            current=section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link=>{
+    navLinks.forEach(link => {
 
         link.classList.remove("active");
 
-        if(link.getAttribute("href")==="#"+current){
+        if (link.getAttribute("href") === "#" + current) {
 
             link.classList.add("active");
 
@@ -128,147 +145,209 @@ window.addEventListener("scroll",()=>{
 
 });
 
+/*================ COUNTER =================*/
 
-/* ===========================
-IMAGE PARALLAX
-=========================== */
+const counters = document.querySelectorAll(
+".achievement-card h2,.impact-card h2,.stat-box h3"
+);
 
-const heroImage=document.querySelector(".hero-image img");
+const counterObserver = new IntersectionObserver(entries => {
 
-window.addEventListener("scroll",()=>{
+    entries.forEach(entry => {
 
-    if(heroImage){
+        if (!entry.isIntersecting) return;
 
-        heroImage.style.transform=
+        const counter = entry.target;
 
-        `translateY(${window.scrollY*0.08}px)`;
+        const text = counter.innerText;
+
+        const target = parseInt(text.replace(/\D/g, ""));
+
+        let count = 0;
+
+        const speed = target / 80;
+
+        const update = () => {
+
+            count += speed;
+
+            if (count < target) {
+
+                counter.innerText =
+                    Math.floor(count) +
+                    text.replace(/[0-9]/g, "");
+
+                requestAnimationFrame(update);
+
+            } else {
+
+                counter.innerText = text;
+
+            }
+
+        };
+
+        update();
+
+        counterObserver.unobserve(counter);
+
+    });
+
+});
+
+counters.forEach(counter => {
+
+    counterObserver.observe(counter);
+
+});
+
+/*================ SCROLL REVEAL =================*/
+
+const revealElements = document.querySelectorAll(
+
+".section-heading,.about-content,.highlight,.timeline-item,.experience-card,.organization-card,.project-card,.book-card,.expert-card,.achievement-card,.impact-card,.mission-card,.vision-wrapper,.contact-box,.footer-top"
+
+);
+
+const revealObserver = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+
+            entry.target.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+}, {
+
+    threshold: .15
+
+});
+
+revealElements.forEach(el => {
+
+    el.style.opacity = "0";
+
+    el.style.transform = "translateY(60px)";
+
+    el.style.transition = ".8s ease";
+
+    revealObserver.observe(el);
+
+});
+
+/*================ HERO PARALLAX =================*/
+
+const heroImage = document.querySelector(".profile-wrapper");
+
+window.addEventListener("mousemove", e => {
+
+    if (!heroImage) return;
+
+    const x = (window.innerWidth / 2 - e.clientX) / 45;
+
+    const y = (window.innerHeight / 2 - e.clientY) / 45;
+
+    heroImage.style.transform =
+        `rotateY(${x}deg) rotateX(${-y}deg)`;
+
+});
+
+/*================ FLOATING GOLD CIRCLES =================*/
+
+const circles = document.querySelectorAll(".gold-circle");
+
+window.addEventListener("scroll", () => {
+
+    let value = window.scrollY;
+
+    circles.forEach((circle, index) => {
+
+        circle.style.transform =
+            `translateY(${value * (0.05 + index * 0.02)}px)`;
+
+    });
+
+});
+
+/*================ BACK TO TOP =================*/
+
+const topButton = document.createElement("button");
+
+topButton.innerHTML =
+'<i class="fa-solid fa-arrow-up"></i>';
+
+topButton.className = "back-top";
+
+document.body.appendChild(topButton);
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        topButton.classList.add("show");
+
+    } else {
+
+        topButton.classList.remove("show");
 
     }
 
 });
 
+topButton.addEventListener("click", () => {
 
-/* ===========================
-SCROLL PROGRESS BAR
-=========================== */
+    window.scrollTo({
 
-const progress=document.createElement("div");
+        top: 0,
 
-progress.style.position="fixed";
-progress.style.top="0";
-progress.style.left="0";
-progress.style.height="3px";
-progress.style.width="0%";
-progress.style.zIndex="99999";
-progress.style.background="#D4AF37";
+        behavior: "smooth"
 
-document.body.appendChild(progress);
-
-window.addEventListener("scroll",()=>{
-
-    const total=
-
-    document.documentElement.scrollHeight-
-
-    window.innerHeight;
-
-    const current=
-
-    (window.scrollY/total)*100;
-
-    progress.style.width=current+"%";
+    });
 
 });
 
+/*================ RIPPLE EFFECT =================*/
 
-/* ===========================
-BUTTON RIPPLE
-=========================== */
+document.querySelectorAll(".btn").forEach(button => {
 
-document.querySelectorAll(".btn").forEach(button=>{
+    button.addEventListener("click", function (e) {
 
-button.addEventListener("mouseenter",()=>{
+        const ripple = document.createElement("span");
 
-button.style.transform="translateY(-4px)";
+        ripple.className = "ripple";
 
-});
+        const rect = this.getBoundingClientRect();
 
-button.addEventListener("mouseleave",()=>{
+        ripple.style.left = (e.clientX - rect.left) + "px";
 
-button.style.transform="translateY(0px)";
+        ripple.style.top = (e.clientY - rect.top) + "px";
 
-});
+        this.appendChild(ripple);
 
-});
+        setTimeout(() => {
 
+            ripple.remove();
 
-/* ===========================
-BOOK HOVER EFFECT
-=========================== */
+        }, 600);
 
-document.querySelectorAll(".book-card").forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
-
-card.style.background=
-
-`radial-gradient(circle at ${x}px ${y}px,
-rgba(212,175,55,.10),
-#171717)`;
+    });
 
 });
 
-card.addEventListener("mouseleave",()=>{
+/*================ CURRENT YEAR =================*/
 
-card.style.background="linear-gradient(180deg,#101010,#171717)";
+const year = document.querySelector(".year");
 
-});
+if (year) {
 
-});
+    year.textContent = new Date().getFullYear();
 
+}
 
-/* ===========================
-VENTURE IMAGE ZOOM
-=========================== */
-
-document.querySelectorAll(".venture-image img").forEach(img=>{
-
-img.addEventListener("mouseenter",()=>{
-
-img.style.transform="scale(1.05)";
-
-});
-
-img.addEventListener("mouseleave",()=>{
-
-img.style.transform="scale(1)";
-
-});
-
-});
-
-
-/* ===========================
-FADE TITLE ON LOAD
-=========================== */
-
-window.addEventListener("load",()=>{
-
-document.body.style.opacity="1";
-
-});
-
-
-document.body.style.opacity="0";
-
-document.body.style.transition=".7s";
-
-
-/* ===========================
-END
-=========================== */
+console.log("Mukesh Parankusam Portfolio Loaded Successfully");
