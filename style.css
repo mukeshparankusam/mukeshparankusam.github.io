@@ -2799,3 +2799,394 @@ visibility:visible;
 text-decoration:none;
 color:inherit;
 }
+
+
+/* =====================================================
+   MOBILE OPTIMIZATION — FINAL OVERRIDES
+   Keeps desktop design unchanged.
+   ===================================================== */
+
+@media (max-width: 1100px) and (min-width: 769px){
+
+    .hero-container{
+        gap:50px;
+    }
+
+    .profile-wrapper{
+        width:min(400px, 90vw);
+        height:min(500px, 112vw);
+        max-height:500px;
+    }
+
+    .hero-left h1{
+        font-size:58px;
+    }
+
+    .hero-description{
+        max-width:760px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+    }
+
+    header{
+        padding:16px 0;
+    }
+
+    .container{
+        width:90%;
+        max-width:none;
+    }
+
+    .logo{
+        font-size:21px;
+        letter-spacing:2px;
+        white-space:nowrap;
+    }
+
+    .menu-btn{
+        font-size:26px;
+        padding:8px;
+        line-height:1;
+    }
+
+    nav.show{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        padding:18px 0 22px;
+        border-top:1px solid rgba(212,175,55,.12);
+    }
+
+    nav.show ul{
+        gap:0;
+        width:100%;
+    }
+
+    nav.show ul li{
+        width:100%;
+        text-align:center;
+    }
+
+    nav.show ul li a{
+        display:block;
+        padding:11px 20px;
+        font-size:15px;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:120px;
+        padding-bottom:80px;
+    }
+
+    .hero-container{
+        display:flex;
+        flex-direction:column;
+        gap:55px;
+        width:100%;
+    }
+
+    .hero-left{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero-tag{
+        max-width:100%;
+        padding:9px 16px;
+        font-size:10px;
+        letter-spacing:2px;
+        line-height:1.5;
+    }
+
+    .hero-left h1{
+        font-size:clamp(34px, 10vw, 48px);
+        line-height:1.12;
+        word-break:normal;
+        overflow-wrap:break-word;
+    }
+
+    .hero-left h2{
+        font-size:17px;
+        line-height:1.65;
+        margin-bottom:22px;
+    }
+
+    .hero-description{
+        font-size:14px;
+        line-height:1.85;
+        margin-bottom:30px;
+    }
+
+    .hero-buttons{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+        margin-bottom:35px;
+    }
+
+    .btn{
+        width:100%;
+        margin-right:0;
+        min-height:52px;
+        padding:14px 24px;
+    }
+
+    .hero-stats{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:12px;
+    }
+
+    .stat-box{
+        width:100%;
+        min-width:0;
+        padding:20px 14px;
+        text-align:center;
+    }
+
+    .stat-box h3{
+        font-size:32px;
+    }
+
+    .stat-box p{
+        font-size:13px;
+        line-height:1.5;
+    }
+
+    .hero-right{
+        width:100%;
+    }
+
+    .profile-wrapper{
+        width:min(340px, 86vw);
+        height:min(420px, 107vw);
+        margin:0 auto;
+    }
+
+    .profile-wrapper img{
+        width:96%;
+        height:96%;
+        border-width:6px;
+    }
+
+    .gold-ring{
+        border-radius:28px;
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .section-heading{
+        margin-bottom:45px;
+    }
+
+    .section-heading span{
+        font-size:.75rem;
+        letter-spacing:2.5px;
+    }
+
+    .section-heading h2{
+        font-size:clamp(30px, 8vw, 38px);
+        line-height:1.25;
+    }
+
+    .about-grid,
+    .experience-wrapper,
+    .contact-wrapper{
+        gap:35px;
+    }
+
+    .projects-grid,
+    .books-grid,
+    .organization-grid,
+    .expertise-grid,
+    .achievement-grid,
+    .impact-grid,
+    .mission-content,
+    .about-highlights,
+    .experience-right{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .timeline{
+        padding-left:18px;
+    }
+
+    .vision-wrapper{
+        width:100%;
+        padding:40px 24px;
+        border-radius:22px;
+    }
+
+    .vision-wrapper h3{
+        font-size:clamp(27px, 7vw, 34px);
+        line-height:1.4;
+    }
+
+    .vision-wrapper p{
+        font-size:15px;
+        line-height:1.85;
+    }
+
+    .contact-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .contact-box{
+        width:100%;
+        padding:22px 18px;
+        gap:15px;
+    }
+
+    .contact-box i{
+        width:58px;
+        height:58px;
+        flex:0 0 58px;
+        font-size:23px;
+    }
+
+    .contact-box h3{
+        font-size:18px;
+    }
+
+    .contact-box p{
+        font-size:13px;
+        overflow-wrap:anywhere;
+    }
+
+    .contact-right input,
+    .contact-right textarea{
+        font-size:16px;
+        padding:16px 17px;
+    }
+
+    footer{
+        padding:55px 0 28px;
+    }
+
+    .footer-top h2{
+        font-size:clamp(25px, 7vw, 32px);
+        letter-spacing:2px;
+    }
+
+    .footer-top p{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .footer-social{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .footer-social a{
+        width:52px;
+        height:52px;
+    }
+
+    .back-top{
+        right:16px;
+        bottom:16px;
+        width:48px;
+        height:48px;
+    }
+
+    .scroll-indicator{
+        display:none;
+    }
+
+    .cursor,
+    .cursor2{
+        display:none;
+    }
+
+}
+
+@media (max-width: 480px){
+
+    .container{
+        width:92%;
+    }
+
+    .hero{
+        padding-top:105px;
+        padding-bottom:65px;
+    }
+
+    .logo{
+        font-size:18px;
+        letter-spacing:1.5px;
+    }
+
+    .hero-left h1{
+        font-size:clamp(31px, 9.5vw, 40px);
+    }
+
+    .hero-left h2{
+        font-size:16px;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .hero-stats{
+        grid-template-columns:1fr;
+    }
+
+    .stat-box{
+        padding:18px;
+    }
+
+    .profile-wrapper{
+        width:min(310px, 84vw);
+        height:min(385px, 104vw);
+    }
+
+    .section{
+        padding:60px 0;
+    }
+
+    .section-heading{
+        margin-bottom:38px;
+    }
+
+    .section-heading h2{
+        font-size:29px;
+    }
+
+    .vision-wrapper{
+        padding:32px 20px;
+    }
+
+    .vision-wrapper h3{
+        font-size:27px;
+    }
+
+    .contact-box{
+        padding:20px 15px;
+    }
+
+    .footer-top h2{
+        font-size:25px;
+    }
+
+}
