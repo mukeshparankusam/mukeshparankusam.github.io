@@ -70,7 +70,7 @@ import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
   async function loadModel() {
     if (engine || loading) return;
     if (!("gpu" in navigator)) {
-      titleEl.textContent = "AI Assistant";
+      titleEl.textContent = "EMKAY";
       subEl.textContent = "WebGPU not supported";
       addBubble("assistant", "This browser does not support WebGPU, which this free browser-based AI needs. Please use a recent version of Chrome, Edge, or Safari on a compatible device.");
       return;
