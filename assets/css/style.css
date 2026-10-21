@@ -14,3 +14,95 @@
 .social-icon svg{width:22px;height:22px}
 @media(max-width:900px){.logo-area{height:132px}.book-card img{height:190px}.promo-cover{height:240px}}
 @media(max-width:620px){.logo-area{height:145px;padding:5px}.book-card{padding:9px 7px 12px}.book-card img{height:170px}.promo-cover{height:190px}}
+
+
+/* FINAL FIX: organization logos, book covers, and social icons */
+.logo-area {
+  height: 190px !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden;
+}
+.logo-area img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+.book-card {
+  min-width: 0;
+}
+.book-card > img {
+  display: block !important;
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  margin: 0 auto 14px !important;
+  transform: none !important;
+}
+.promo-cover {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden;
+}
+.promo-cover img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.contact-grid .socials {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 48px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.contact-grid a.social-icon {
+  display: inline-flex !important;
+  flex: 0 0 46px !important;
+  width: 46px !important;
+  height: 46px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid var(--gold) !important;
+  border-radius: 50% !important;
+  color: var(--gold) !important;
+  background: var(--soft) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+.contact-grid a.social-icon svg {
+  display: block !important;
+  width: 23px !important;
+  height: 23px !important;
+  fill: currentColor;
+  color: currentColor;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.contact-grid a.social-icon:hover {
+  color: var(--black) !important;
+  background: var(--gold) !important;
+}
+@media (max-width: 900px) {
+  .logo-area { height: 170px !important; }
+  .book-card > img { height: 260px !important; }
+}
+@media (max-width: 620px) {
+  .logo-area { height: 155px !important; }
+  .book-card > img { height: 220px !important; }
+  .contact-grid .socials { gap: 9px !important; }
+}
